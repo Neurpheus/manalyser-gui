@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE neural-network SYSTEM "neural-network-1.0.dtd">-->
+<neural-network version="1.0">
+    <name>Default neural network architecture.</name>
+    <description>
+This neural network contains 2 layers :
+  - input layer which consists of "I" linear input neurons,
+  - output layer which consists of "O" softmax output neurons.
+The input layer is connected with the output layer via a full synapse.
+	</description>
+    <creation-date>30.12.2007</creation-date>
+    <modification-date>30.12.2007</modification-date>
+    <variables>
+        <variable>
+            <name>I</name>
+            <description>Number of neural network inputs</description>
+        </variable>
+        <variable>
+            <name>O</name>
+            <description>Number of neural network outputs</description>
+        </variable>
+    </variables>
+    <layers>
+        <layer id="layer_input">
+            <type>linear</type>
+            <number-of-neurons>I</number-of-neurons>
+        </layer>
+        <layer id="layer_output">
+            <type>softmax</type>
+            <number-of-neurons>O</number-of-neurons>
+        </layer>
+    </layers>
+    <input-layer layerId="layer_input"/>
+    <output-layer layerId="layer_output"/>
+    <synapses>
+        <synapse id="s1">
+            <type>full</type>
+            <source-layer layerId="layer_input"/>
+            <destination-layer layerId="layer_output"/>
+        </synapse> 
+    </synapses>
+</neural-network>

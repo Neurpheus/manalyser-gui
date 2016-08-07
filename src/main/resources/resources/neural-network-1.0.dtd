@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Główny element definicji sieci neuronowej. -->
+<!ELEMENT neural-network 
+    (name?, description?, creation-date?, modification-date?, variables, 
+    layers, input-layer, output-layer, synapses )>
+<!ATTLIST neural-network version CDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT creation-date (#PCDATA)>
+<!ELEMENT modification-date (#PCDATA)>
+
+<!ELEMENT variables (variable*)>
+<!ELEMENT variable (name, description)>
+
+<!ELEMENT layers (layer+)>
+<!ELEMENT layer (type, number-of-neurons)>
+<!ATTLIST layer id ID #REQUIRED>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT number-of-neurons (#PCDATA)>
+
+<!ELEMENT input-layer EMPTY>
+<!ATTLIST input-layer layerId IDREF #REQUIRED>
+
+<!ELEMENT output-layer EMPTY>
+<!ATTLIST output-layer layerId IDREF #REQUIRED>
+
+<!ELEMENT synapses (synapse*)>
+<!ELEMENT synapse (type, source-layer, destination-layer)>
+<!ATTLIST synapse id ID #REQUIRED>
+<!ELEMENT source-layer EMPTY>
+<!ATTLIST source-layer layerId IDREF #REQUIRED>
+<!ELEMENT destination-layer EMPTY>
+<!ATTLIST destination-layer layerId IDREF #REQUIRED>
