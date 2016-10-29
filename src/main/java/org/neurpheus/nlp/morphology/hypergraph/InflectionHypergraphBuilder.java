@@ -23,8 +23,8 @@ import java.awt.Color;
 import java.util.Iterator;
 import java.util.List;
 import org.neurpheus.collections.tree.Tree;
-import org.neurpheus.collections.tree.TreeLeaf;
 import org.neurpheus.collections.tree.TreeNode;
+import org.neurpheus.collections.tree.TreeNodeWithData;
 import org.neurpheus.nlp.morphology.*;
 import org.neurpheus.nlp.morphology.inflection.InflectionPatternsMap;
 
@@ -109,7 +109,7 @@ public class InflectionHypergraphBuilder {
             String pattern = (String) attributeManager.getAttribute("pattern", node);
             if (treeNode != null) {
                 if (treeNode.isLeaf()) {
-                    int ipaIndex = ((Integer) ((TreeLeaf) treeNode).getData()).intValue();
+                    int ipaIndex = ((Integer) ((TreeNodeWithData) treeNode).getData()).intValue();
                     ExtendedInflectionPattern[] ipa = ipm.get(ipaIndex);
                     for (int i = 0; i < ipa.length; i++) {
                         String label = Integer.toString(ipa[i].getId());
