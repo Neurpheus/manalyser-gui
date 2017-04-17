@@ -21,8 +21,10 @@ import hypergraph.visualnet.NodeRenderer;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 /**
@@ -144,6 +146,43 @@ public class HypergraphPanel extends GraphPanel {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawString(pattern, 2, 20);
+    }
+
+    protected void expandToPattern() {
+        Node node = (Node) getGraph().getElement("r1");
+        Node parentNode = null;
+        for (int i = pattern.length() - 1; i >= 0; i--) {
+            char ch = pattern.charAt(i);
+            Collection<Edge> edges = (Collection<Edge>) getGraph().getEdges(node);
+            for (Edge edge : edges) {
+                Node targetNode = edge.getTarget();
+                String label = targetNode.getLabel();
+                if (label.length() == 1 && label.charAt(0) == ch) {
+                    node = targetNode;
+                    if (!isExpanded(node)) {
+                        builder.expandNode(getGraph(), node, 1);
+                        super.expandNode(node);
+                    }
+                    break;
+                }
+            }
+        }
+        getGraphLayout().layout();
+        centerNode(node);
+    }
+            
+            
+    public void onKeyPress(KeyEvent evt) {
+        char ch = evt.getKeyChar();
+        if (ch == '\b') {
+            if (pattern.length() > 0) {
+                pattern = pattern.substring(1, pattern.length());
+                expandToPattern();
+            }
+        } else {
+            pattern = ch + pattern;
+            expandToPattern();
+        }
     }
 	    
 }

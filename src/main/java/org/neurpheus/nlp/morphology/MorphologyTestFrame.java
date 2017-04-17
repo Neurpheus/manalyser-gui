@@ -31,6 +31,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.xml.parsers.ParserConfigurationException;
 import org.neurpheus.core.io.FilePath2Object;
 import org.neurpheus.machinelearning.neuralnet.xml.XmlNeuralNetwork;
+import org.neurpheus.nlp.morphology.builder.MorphologicalAnalyserBuildStep;
 import org.neurpheus.nlp.morphology.builder.MorphologicalAnalyserBuilder;
 import org.neurpheus.nlp.morphology.builder.NeuralNetworkLearningProperties;
 import org.neurpheus.nlp.morphology.hypergraph.InflectionHypergraph;
@@ -388,10 +389,10 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
+                    .add(jSplitPane1)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jShowOnlyUncertainResults)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 489, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(jSpeed)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jAnalyseMultilineTextButton)))
@@ -505,19 +506,19 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTabbedPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
-                    .add(jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
+                    .add(jTabbedPane2)
+                    .add(jSeparator1)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jAnanlyserPath, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                        .add(jAnanlyserPath)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jOpenAnanlyserButton))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                         .add(jUseNeuralNetwork)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jUseBaseFormsDictionary)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 425, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(jHypergraph))
                     .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 630, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -604,17 +605,22 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
         jLabel12.setText("Maximum number of training examples for an epoch:");
 
         jMaximumNumberOfTrainingExamples.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jMaximumNumberOfTrainingExamples.setText("25000");
+        jMaximumNumberOfTrainingExamples.setText("90000");
+        jMaximumNumberOfTrainingExamples.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMaximumNumberOfTrainingExamplesActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Learning factor:");
 
         jLearningFactor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jLearningFactor.setText("0.9");
+        jLearningFactor.setText("0.5");
 
         jLabel14.setText("Learning factor multipler:");
 
         jLearningFactorMultipler.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jLearningFactorMultipler.setText("1.0");
+        jLearningFactorMultipler.setText("0.9");
 
         jLabel15.setText("-");
 
@@ -629,12 +635,12 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
         jLabel16.setText("/ number of epochs");
 
         jNumberOfEpochs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jNumberOfEpochs.setText("20");
+        jNumberOfEpochs.setText("40");
 
         jLabel17.setText("Momentum factor:");
 
         jMomentuFactor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jMomentuFactor.setText("0.55");
+        jMomentuFactor.setText("0.65");
 
         jLabel18.setText("Learning algorithm:");
 
@@ -653,7 +659,7 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
         jLabel20.setText("Minimum error value");
 
         jMimimumErrorValue.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jMimimumErrorValue.setText("0.1");
+        jMimimumErrorValue.setText("0.01");
 
         jLabel21.setText("Learn outputs for active inputs (classification mode):");
 
@@ -685,14 +691,14 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
                     .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                         .add(jPanel10Layout.createSequentialGroup()
                             .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(jMomentuFactor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                .add(jLearningFactorMultipler, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                .add(jLearningFactor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                .add(jNumberOfEpochs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                .add(jMaximumNumberOfTrainingExamples, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                .add(jWeightsAmplitude, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                .add(jMaxJumpFactor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jMimimumErrorValue, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                                .add(jMomentuFactor)
+                                .add(jLearningFactorMultipler)
+                                .add(jLearningFactor)
+                                .add(jNumberOfEpochs)
+                                .add(jMaximumNumberOfTrainingExamples)
+                                .add(jWeightsAmplitude)
+                                .add(jMaxJumpFactor)
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jMimimumErrorValue))
                             .add(jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                 .add(jPanel10Layout.createSequentialGroup()
                                     .add(23, 23, 23)
@@ -823,7 +829,6 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
         jConsoleArea.setBackground(new java.awt.Color(204, 204, 204));
         jConsoleArea.setColumns(20);
         jConsoleArea.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        jConsoleArea.setForeground(new java.awt.Color(0, 0, 0));
         jConsoleArea.setRows(10);
         jConsoleArea.setText("Click Build to start");
         jScrollPane6.setViewportView(jConsoleArea);
@@ -1076,7 +1081,9 @@ public class MorphologyTestFrame extends javax.swing.JFrame {
             nnp.setClassificationMode(jClassifyInputs.isSelected());
             nnp.setNumberOfTestExamples(Integer.parseInt(jNumberOfTestExamples.getText()));
             try {
-                MorphologicalAnalyserBuilder.processLanguage(dictionaryPath, symbol, language, from, to);
+                MorphologicalAnalyserBuilder.processLanguage(dictionaryPath, symbol, language,
+                    MorphologicalAnalyserBuildStep.values()[from],
+                    MorphologicalAnalyserBuildStep.values()[to]);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 throw ex;
@@ -1251,6 +1258,10 @@ private void jAnalyseMultilineTextButtonActionPerformed(java.awt.event.ActionEve
 private void jComboBoxFromStepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFromStepActionPerformed
     // TODO add your handling code here:
 }//GEN-LAST:event_jComboBoxFromStepActionPerformed
+
+    private void jMaximumNumberOfTrainingExamplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMaximumNumberOfTrainingExamplesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMaximumNumberOfTrainingExamplesActionPerformed
 
     /**
      * @param args the command line arguments

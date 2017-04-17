@@ -136,6 +136,7 @@ public class InflectionHypergraphBuilder {
                 for (final Iterator it = children.iterator(); it.hasNext();) {
                     TreeNode child = (TreeNode) it.next();
                     String label = child.getValue() == null ? "null" : "" + (char) ((Integer) child.getValue()).intValue();
+                    /*
                     switch (label) {
                         case "!" :
                             label = " BASE FORM";
@@ -154,6 +155,7 @@ public class InflectionHypergraphBuilder {
                             break;
                         default :
                     }
+                    */
                     
                     try {
                         String id = "n" + Long.toString(idCounter++);
